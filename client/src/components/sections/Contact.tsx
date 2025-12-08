@@ -30,26 +30,26 @@ export default function Contact() {
 
             <div className="space-y-8">
               <a 
-                href="mailto:contact@pianotech.com" 
+                href="mailto:j.Willis.keys@gmail.com" 
                 className="flex items-center gap-6 group"
               >
                 <div className="w-12 h-12 rounded-full border border-background/20 flex items-center justify-center group-hover:bg-background group-hover:text-foreground transition-all duration-300">
                   <Mail className="w-5 h-5" />
                 </div>
                 <span className="text-2xl md:text-3xl font-serif tracking-wide border-b border-transparent group-hover:border-background transition-colors pb-1">
-                  contact@pianotech.com
+                  j.Willis.keys@gmail.com
                 </span>
               </a>
 
               <a 
-                href="tel:+15551234567" 
+                href="tel:+14352755959" 
                 className="flex items-center gap-6 group"
               >
                 <div className="w-12 h-12 rounded-full border border-background/20 flex items-center justify-center group-hover:bg-background group-hover:text-foreground transition-all duration-300">
                   <Phone className="w-5 h-5" />
                 </div>
                 <span className="text-2xl md:text-3xl font-serif tracking-wide border-b border-transparent group-hover:border-background transition-colors pb-1">
-                  (555) 123-4567
+                  435-275-5959
                 </span>
               </a>
               
@@ -58,7 +58,7 @@ export default function Contact() {
                   <MapPin className="w-5 h-5 text-background/40" />
                 </div>
                 <span className="text-lg text-background/60 font-light">
-                  Servicing Greater Boston & Surrounding Suburbs
+                  Located in Somerville, MA • Servicing Greater Boston
                 </span>
               </div>
             </div>
@@ -66,9 +66,19 @@ export default function Contact() {
         </div>
       </div>
       
-      <footer className="absolute bottom-6 w-full px-6 border-t border-background/10 pt-6 flex justify-between text-xs text-background/40">
-        <span>© {new Date().getFullYear()} Piano Services</span>
-        <span>Registered Piano Technician</span>
+      <footer className="absolute bottom-6 w-full px-6 border-t border-background/10 pt-6 flex justify-between items-center text-xs text-background/40">
+        <span>© {new Date().getFullYear()} John Willis Piano</span>
+        <div className="flex items-center gap-3">
+          <span>Registered Piano Technician</span>
+          <img 
+            src="https://www.ptg.org/images/ptg-logo.png" 
+            alt="Piano Technicians Guild Logo" 
+            className="h-8 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+        </div>
       </footer>
     </section>
   );

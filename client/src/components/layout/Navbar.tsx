@@ -22,7 +22,7 @@ export default function Navbar() {
     >
       <Link href="/">
         <a className="font-serif text-xl tracking-tight hover:opacity-70 transition-opacity">
-          Piano Technician
+          John Willis Piano
         </a>
       </Link>
 
