@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import heroImage from "@assets/generated_images/minimalist_macro_of_piano_strings_and_bronze_plate.png";
+import heroImage from "@assets/generated_images/grand_piano_strings_with_dampers_on_iron_plate.png";
 
 export default function Hero() {
   return (

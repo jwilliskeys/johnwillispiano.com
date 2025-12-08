@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import actionImage from "@assets/generated_images/close_up_of_piano_hammers_and_action.png";
+import actionImage from "@assets/generated_images/authentic_row_of_grand_piano_hammers_with_red_underfelt.png";
 
 export default function About() {
   return (
