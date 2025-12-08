@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import actionImage from "@assets/stock_images/grand_piano_action_m_4fe7f8e9.jpg";
+import actionImage from "@assets/JohnWillisPiano_1748_Large_1765228169271.jpeg";
 
 export default function About() {
   return (
@@ -16,7 +16,7 @@ export default function About() {
              <div className="aspect-[4/5] overflow-hidden">
                 <img 
                   src={actionImage} 
-                  alt="Piano Action Detail" 
+                  alt="John Willis Tuning Piano" 
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
              </div>
