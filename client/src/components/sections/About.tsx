@@ -66,7 +66,7 @@ export default function About() {
                 </li>
                 <li className="flex items-center gap-2 text-sm text-foreground/80">
                   <span className="w-1.5 h-1.5 rounded-full bg-foreground/40" />
-                  Full Rebuilding
+                  Action Rebuilding
                 </li>
               </ul>
             </div>
