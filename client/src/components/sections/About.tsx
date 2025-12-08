@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import actionImage from "@assets/stock_images/grand_piano_hammers__a053f670.jpg";
+import actionImage from "@assets/stock_images/grand_piano_action_m_4fe7f8e9.jpg";
 
 export default function About() {
   return (
