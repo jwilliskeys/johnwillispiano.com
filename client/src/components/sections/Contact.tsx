@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin } from "lucide-react";
 import rimImage from "@assets/generated_images/abstract_curve_of_a_grand_piano_rim.png";
+import BookingForm from "@/components/booking/BookingForm";
+import { Button } from "@/components/ui/button";
 
 export default function Contact() {
   return (
@@ -24,9 +26,22 @@ export default function Contact() {
               Ready to elevate your instrument?
             </h2>
             
-            <p className="text-xl text-background/80 font-light mb-16 max-w-xl">
+            <p className="text-xl text-background/80 font-light mb-12 max-w-xl">
               I am currently accepting a limited number of new clients in the Greater Boston area. Please reach out to schedule an appointment.
             </p>
+
+            <div className="mb-16">
+              <BookingForm 
+                trigger={
+                  <Button 
+                    size="lg"
+                    className="bg-background text-foreground hover:bg-background/90 rounded-none px-8 py-6 text-lg tracking-wide uppercase font-medium"
+                  >
+                    Book Service Now
+                  </Button>
+                } 
+              />
+            </div>
 
             <div className="space-y-8">
               <a 

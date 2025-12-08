@@ -1,6 +1,8 @@
 import { Link } from "wouter";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import BookingForm from "@/components/booking/BookingForm";
+import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,10 +28,26 @@ export default function Navbar() {
         </a>
       </Link>
 
-      <div className="flex gap-8 text-sm font-medium tracking-wide uppercase">
-        <a href="#services" className="hover:opacity-70 transition-opacity hidden md:block">Services</a>
-        <a href="#about" className="hover:opacity-70 transition-opacity hidden md:block">About</a>
-        <a href="#contact" className="hover:opacity-70 transition-opacity">Contact</a>
+      <div className="flex items-center gap-8">
+        <div className="hidden md:flex gap-8 text-sm font-medium tracking-wide uppercase">
+          <a href="#services" className="hover:opacity-70 transition-opacity">Services</a>
+          <a href="#about" className="hover:opacity-70 transition-opacity">About</a>
+          <a href="#contact" className="hover:opacity-70 transition-opacity">Contact</a>
+        </div>
+        
+        <BookingForm 
+          trigger={
+            <Button 
+              variant="outline" 
+              className={cn(
+                "rounded-none border-primary hover:bg-primary hover:text-primary-foreground transition-all uppercase tracking-widest text-xs",
+                !scrolled && "border-white text-white hover:bg-white hover:text-black"
+              )}
+            >
+              Book Now
+            </Button>
+          } 
+        />
       </div>
     </nav>
   );
