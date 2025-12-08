@@ -17,7 +17,7 @@ export default function About() {
                 <img 
                   src={actionImage} 
                   alt="John Willis Tuning Piano" 
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-cover object-[25%_center] grayscale hover:grayscale-0 transition-all duration-700"
                 />
              </div>
              <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-background border border-border p-6 flex items-center justify-center hidden md:flex">
@@ -45,7 +45,7 @@ export default function About() {
                 My background includes over six years of intensive work in high-end dealerships, rebuilding shops, and university concert halls. This diverse experience has honed my ear for tone and my hands for precision.
               </p>
               <p>
-                I care deeply about the musical power and beauty of the greatest instrument on earth. My goal is not just to tune your piano, but to help you rediscover the joy of playing it.
+                I have been an active pianist all my life, with a central vision of helping other musicians to the best of my ability. I care deeply about the joy experienced at the keyboard, and my work is dedicated to bringing out the full musical power and beauty of your instrument.
               </p>
             </div>
 
