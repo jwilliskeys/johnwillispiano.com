@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin } from "lucide-react";
+import ptgLogo from "@assets/stock_images/piano_technicians_gu_4bff615a.jpg";
 import rimImage from "@assets/generated_images/abstract_curve_of_a_grand_piano_rim.png";
 
 export default function Contact() {
@@ -71,12 +72,9 @@ export default function Contact() {
         <div className="flex items-center gap-3">
           <span>Registered Piano Technician</span>
           <img 
-            src="https://www.ptg.org/images/ptg-logo.png" 
+            src={ptgLogo} 
             alt="Piano Technicians Guild Logo" 
             className="h-8 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all"
-            onError={(e) => {
-              e.currentTarget.style.display = 'none';
-            }}
           />
         </div>
       </footer>

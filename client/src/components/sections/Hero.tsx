@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import heroImage from "@assets/generated_images/grand_piano_strings_with_dampers_on_iron_plate.png";
+import heroImage from "@assets/stock_images/steinway_grand_piano_ae602258.jpg";
 
 export default function Hero() {
   return (
