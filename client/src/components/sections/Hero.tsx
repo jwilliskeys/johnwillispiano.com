@@ -28,7 +28,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.5 }}
         >
           <span className="block text-sm md:text-base tracking-[0.2em] uppercase mb-6 text-white/80">
-            John Willis Piano • Greater Boston Area
+            Greater Boston Area
           </span>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-normal leading-tight mb-8">
             Restoring the <br/>
