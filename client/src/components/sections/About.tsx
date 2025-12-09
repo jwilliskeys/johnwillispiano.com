@@ -42,7 +42,7 @@ export default function About() {
                 I believe a piano is more than a machine; it is a living voice. As a registered piano technician and lifelong pianist, I approach every instrument with a deep respect for its potential.
               </p>
               <p>
-                My background includes over six years of intensive work in high-end dealerships, rebuilding shops, and university concert halls. This diverse experience has honed my ear for tone and my hands for precision.
+                My background includes over six years of intensive work in dealerships, rebuilding shops, and university concert halls. This diverse experience has honed my ear for tone and my hands for precision.
               </p>
               <p>
                 I have been an active pianist all my life, with a central vision of helping other musicians to the best of my ability. I care deeply about the joy experienced at the keyboard, and my work is dedicated to bringing out the full musical power and beauty of your instrument.
