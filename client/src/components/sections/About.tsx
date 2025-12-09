@@ -39,7 +39,7 @@ export default function About() {
             
             <div className="space-y-6 text-muted-foreground text-lg font-light leading-relaxed">
               <p>
-                I believe a piano is more than a machine; it is a living voice. As a registered piano technician and lifelong pianist, I approach every instrument with a deep respect for its potential.
+                I believe a piano is more than a musical machine; it is a living voice. As a registered piano technician and lifelong pianist, I approach every instrument with a deep respect for its potential.
               </p>
               <p>
                 My background includes over six years of intensive work in dealerships, rebuilding shops, and university concert halls. This diverse experience has honed my ear for tone and my hands for precision.
