@@ -32,8 +32,8 @@ interface BookingFormProps {
 export default function BookingForm({ trigger, open, onOpenChange }: BookingFormProps) {
   const { toast } = useToast();
   const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Handle controlled/uncontrolled state
   const show = open !== undefined ? open : isOpen;
   const setShow = onOpenChange || setIsOpen;
 
@@ -52,14 +52,36 @@ export default function BookingForm({ trigger, open, onOpenChange }: BookingForm
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: "Request Sent",
-      description: "I'll be in touch shortly to schedule your appointment.",
-    });
-    setShow(false);
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/booking', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit booking request');
+      }
+
+      toast({
+        title: "Request Sent",
+        description: "I'll be in touch shortly to schedule your appointment.",
+      });
+      setShow(false);
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send request. Please try again or call directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -79,7 +101,7 @@ export default function BookingForm({ trigger, open, onOpenChange }: BookingForm
                   <FormItem>
                     <FormLabel>Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="John Doe" {...field} />
+                      <Input placeholder="John Doe" {...field} data-testid="input-name" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -94,7 +116,7 @@ export default function BookingForm({ trigger, open, onOpenChange }: BookingForm
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input placeholder="john@example.com" {...field} />
+                        <Input placeholder="john@example.com" {...field} data-testid="input-email" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -107,7 +129,7 @@ export default function BookingForm({ trigger, open, onOpenChange }: BookingForm
                     <FormItem>
                       <FormLabel>Phone</FormLabel>
                       <FormControl>
-                        <Input placeholder="(555) 123-4567" {...field} />
+                        <Input placeholder="(555) 123-4567" {...field} data-testid="input-phone" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -122,7 +144,7 @@ export default function BookingForm({ trigger, open, onOpenChange }: BookingForm
                   <FormItem>
                     <FormLabel>Address</FormLabel>
                     <FormControl>
-                      <Input placeholder="123 Main St, Somerville, MA" {...field} />
+                      <Input placeholder="123 Main St, Somerville, MA" {...field} data-testid="input-address" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -137,7 +159,7 @@ export default function BookingForm({ trigger, open, onOpenChange }: BookingForm
                     <FormItem>
                       <FormLabel>Piano Make</FormLabel>
                       <FormControl>
-                        <Input placeholder="Steinway, Yamaha, etc." {...field} />
+                        <Input placeholder="Steinway, Yamaha, etc." {...field} data-testid="input-piano-make" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -157,13 +179,13 @@ export default function BookingForm({ trigger, open, onOpenChange }: BookingForm
                         >
                           <FormItem className="flex items-center space-x-2 space-y-0">
                             <FormControl>
-                              <RadioGroupItem value="grand" />
+                              <RadioGroupItem value="grand" data-testid="radio-grand" />
                             </FormControl>
                             <FormLabel className="font-normal">Grand</FormLabel>
                           </FormItem>
                           <FormItem className="flex items-center space-x-2 space-y-0">
                             <FormControl>
-                              <RadioGroupItem value="upright" />
+                              <RadioGroupItem value="upright" data-testid="radio-upright" />
                             </FormControl>
                             <FormLabel className="font-normal">Upright</FormLabel>
                           </FormItem>
@@ -185,6 +207,7 @@ export default function BookingForm({ trigger, open, onOpenChange }: BookingForm
                         <Checkbox
                           checked={field.value}
                           onCheckedChange={field.onChange}
+                          data-testid="checkbox-needs-tuning"
                         />
                       </FormControl>
                       <div className="space-y-1 leading-none">
@@ -204,6 +227,7 @@ export default function BookingForm({ trigger, open, onOpenChange }: BookingForm
                         <Checkbox
                           checked={field.value}
                           onCheckedChange={field.onChange}
+                          data-testid="checkbox-not-tuned-year"
                         />
                       </FormControl>
                       <div className="space-y-1 leading-none">
@@ -227,6 +251,7 @@ export default function BookingForm({ trigger, open, onOpenChange }: BookingForm
                         placeholder="Any specific issues like sticking keys, broken strings, etc."
                         className="resize-none"
                         {...field}
+                        data-testid="textarea-notes"
                       />
                     </FormControl>
                     <FormMessage />
@@ -234,8 +259,13 @@ export default function BookingForm({ trigger, open, onOpenChange }: BookingForm
                 )}
               />
             </div>
-            <Button type="submit" className="w-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
-              Submit Request
+            <Button 
+              type="submit" 
+              className="w-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
+              disabled={isSubmitting}
+              data-testid="button-submit"
+            >
+              {isSubmitting ? "Sending..." : "Submit Request"}
             </Button>
           </form>
         </Form>
