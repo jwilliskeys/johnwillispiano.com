@@ -45,14 +45,14 @@ export default function Contact() {
 
             <div className="space-y-8">
               <a 
-                href="mailto:j.Willis.keys@gmail.com" 
+                href="mailto:j.willis.keys@gmail.com" 
                 className="flex items-center gap-6 group"
               >
                 <div className="w-12 h-12 rounded-full border border-background/20 flex items-center justify-center group-hover:bg-background group-hover:text-foreground transition-all duration-300">
                   <Mail className="w-5 h-5" />
                 </div>
                 <span className="text-2xl md:text-3xl font-serif tracking-wide border-b border-transparent group-hover:border-background transition-colors pb-1">
-                  j.Willis.keys@gmail.com
+                  j.willis.keys@gmail.com
                 </span>
               </a>
 
@@ -73,7 +73,7 @@ export default function Contact() {
                   <MapPin className="w-5 h-5 text-background/40" />
                 </div>
                 <span className="text-lg text-background/60 font-light">
-                  Located in Somerville, MA • Servicing Greater Boston
+                  Located in Somerville, MA
                 </span>
               </div>
             </div>
