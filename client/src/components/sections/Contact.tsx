@@ -13,17 +13,8 @@ export default function Contact() {
         <img src={rimImage} alt="" className="w-full h-full object-cover mix-blend-screen" />
       </div>
 
-      {/* PTG Insignia Watermark */}
-      <div className="absolute left-[55%] md:left-[50%] top-1/2 -translate-y-1/2 pointer-events-none z-20">
-        <img 
-          src={ptgInsignia} 
-          alt="Piano Technicians Guild" 
-          className="w-32 md:w-48 h-32 md:h-48 object-contain opacity-20"
-        />
-      </div>
-
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -53,39 +44,47 @@ export default function Contact() {
               />
             </div>
 
-            <div className="space-y-8">
-              <a 
-                href="mailto:j.willis.keys@gmail.com" 
-                className="flex items-center gap-6 group"
-              >
-                <div className="w-12 h-12 rounded-full border border-background/20 flex items-center justify-center group-hover:bg-background group-hover:text-foreground transition-all duration-300">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <span className="text-2xl md:text-3xl font-serif tracking-wide border-b border-transparent group-hover:border-background transition-colors pb-1">
-                  j.willis.keys@gmail.com
-                </span>
-              </a>
+            <div className="flex items-start gap-12 md:gap-16">
+              <div className="space-y-8">
+                <a 
+                  href="mailto:j.willis.keys@gmail.com" 
+                  className="flex items-center gap-6 group"
+                >
+                  <div className="w-12 h-12 rounded-full border border-background/20 flex items-center justify-center group-hover:bg-background group-hover:text-foreground transition-all duration-300">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <span className="text-2xl md:text-3xl font-serif tracking-wide border-b border-transparent group-hover:border-background transition-colors pb-1">
+                    j.willis.keys@gmail.com
+                  </span>
+                </a>
 
-              <a 
-                href="tel:+14352755959" 
-                className="flex items-center gap-6 group"
-              >
-                <div className="w-12 h-12 rounded-full border border-background/20 flex items-center justify-center group-hover:bg-background group-hover:text-foreground transition-all duration-300">
-                  <Phone className="w-5 h-5" />
+                <a 
+                  href="tel:+14352755959" 
+                  className="flex items-center gap-6 group"
+                >
+                  <div className="w-12 h-12 rounded-full border border-background/20 flex items-center justify-center group-hover:bg-background group-hover:text-foreground transition-all duration-300">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <span className="text-2xl md:text-3xl font-serif tracking-wide border-b border-transparent group-hover:border-background transition-colors pb-1">
+                    435-275-5959
+                  </span>
+                </a>
+                
+                <div className="flex items-center gap-6 pt-4">
+                  <div className="w-12 h-12 flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-background/40" />
+                  </div>
+                  <span className="text-lg text-background/60 font-light">
+                    Located in Somerville, MA
+                  </span>
                 </div>
-                <span className="text-2xl md:text-3xl font-serif tracking-wide border-b border-transparent group-hover:border-background transition-colors pb-1">
-                  435-275-5959
-                </span>
-              </a>
-              
-               <div className="flex items-center gap-6 pt-4">
-                <div className="w-12 h-12 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-background/40" />
-                </div>
-                <span className="text-lg text-background/60 font-light">
-                  Located in Somerville, MA
-                </span>
               </div>
+
+              <img 
+                src={ptgInsignia} 
+                alt="Piano Technicians Guild" 
+                className="w-40 h-40 md:w-52 md:h-52 object-contain hidden md:block"
+              />
             </div>
           </motion.div>
         </div>
