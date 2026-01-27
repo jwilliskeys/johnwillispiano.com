@@ -33,12 +33,20 @@ export async function registerRoutes(
         ${validatedData.notes ? `<p><strong>Additional Notes:</strong> ${validatedData.notes}</p>` : ''}
       `;
       
-      await client.emails.send({
+      const emailResult = await client.emails.send({
         from: fromEmail,
         to: 'j.willis.keys@gmail.com',
         subject: `New Booking Request from ${validatedData.name}`,
         html: emailHtml,
       });
+      
+      console.log('Email sent result:', JSON.stringify(emailResult));
+      
+      if (emailResult.error) {
+        console.error('Email sending failed:', emailResult.error);
+        res.status(500).json({ error: 'Failed to send email notification' });
+        return;
+      }
       
       res.json({ success: true, id: bookingRequest.id });
     } catch (error) {
