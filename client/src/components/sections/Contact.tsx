@@ -14,11 +14,11 @@ export default function Contact() {
       </div>
 
       {/* PTG Insignia Watermark */}
-      <div className="absolute right-8 md:right-24 lg:right-32 top-1/2 -translate-y-1/2 pointer-events-none z-20">
+      <div className="absolute left-[55%] md:left-[50%] top-1/2 -translate-y-1/2 pointer-events-none z-20">
         <img 
           src={ptgInsignia} 
           alt="Piano Technicians Guild" 
-          className="w-32 md:w-48 h-32 md:h-48 object-contain opacity-20 invert"
+          className="w-32 md:w-48 h-32 md:h-48 object-contain opacity-20"
         />
       </div>
 
