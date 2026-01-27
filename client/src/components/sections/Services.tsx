@@ -2,20 +2,20 @@ import { motion } from "framer-motion";
 
 const services = [
   {
-    title: "Fine Tuning",
-    description: "Setting the pitch and temperament to ensure clarity, warmth, and stability across the entire keyboard.",
-  },
-  {
-    title: "Regulation",
-    description: "Adjusting the thousands of mechanical parts in the action to ensure a responsive, even, and controllable touch.",
-  },
-  {
-    title: "Voicing",
-    description: "Manipulating the hammer felt to alter the tone color—ranging from bright and powerful to mellow and singing.",
+    title: "Tuning",
+    description: "Setting the pitch and temperament to ensure clarity, warmth, and stability across the entire keyboard. With changes in temperature and humidity, tuning the piano is required minimum for each service.",
   },
   {
     title: "Repairs",
-    description: "Expert diagnosis and repair of broken strings, sticking keys, squeaky pedals, and other mechanical issues.",
+    description: "Expert diagnosis and repair of broken strings, sticking keys, squeaky pedals, and other mechanical issues. Small repairs can be made during a tuning, but in some cases the piano may demand rebuilding or replacement depending on use.",
+  },
+  {
+    title: "Regulation",
+    description: "Adjusting the thousands of mechanical parts in the action to ensure a responsive, even, and controllable touch. Every piano is in a different state of regulation, some need small adjustments but often there’s a full day of work involved.",
+  },
+  {
+    title: "Voicing",
+    description: "Manipulating the hammer felt to alter the tone color—ranging from bright and powerful to mellow and singing. Voicing comes down to preference, and ultimately requires the piano to be regulated beforehand for best results.",
   }
 ];
 
