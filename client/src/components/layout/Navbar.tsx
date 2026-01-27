@@ -9,7 +9,8 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      // Show navbar only after scrolling past the hero title (approx 500px or 60vh)
+      setScrolled(window.scrollY > window.innerHeight * 0.6);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -18,8 +19,8 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-500 ease-out py-6 px-6 md:px-12 flex justify-between items-center mix-blend-difference text-white",
-        scrolled ? "bg-background/80 backdrop-blur-md py-4 text-foreground mix-blend-normal border-b" : "bg-transparent"
+        "fixed top-0 w-full z-50 transition-all duration-500 ease-out py-4 px-6 md:px-12 flex justify-between items-center text-foreground border-b bg-background/80 backdrop-blur-md",
+        scrolled ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
       )}
     >
       <Link href="/">
@@ -39,10 +40,7 @@ export default function Navbar() {
           trigger={
             <Button 
               variant="outline" 
-              className={cn(
-                "rounded-none border-primary hover:bg-primary hover:text-primary-foreground transition-all uppercase tracking-widest text-xs",
-                !scrolled && "border-white text-white hover:bg-white hover:text-black"
-              )}
+              className="rounded-none border-primary hover:bg-primary hover:text-primary-foreground transition-all uppercase tracking-widest text-xs"
             >
               Book Now
             </Button>

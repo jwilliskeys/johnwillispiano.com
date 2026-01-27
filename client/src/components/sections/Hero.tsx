@@ -27,15 +27,11 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <span className="block text-sm md:text-base tracking-[0.2em] uppercase mb-6 text-white/80">
-            Greater Boston Area
-          </span>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-normal leading-tight mb-8">
-            Restoring the <br/>
-            <span className="italic">Soul</span> of Sound
+            John Willis Piano
           </h1>
           <p className="text-lg md:text-xl text-white/90 font-light max-w-2xl mx-auto mb-12">
-            Expert piano care for the discerning musician. Tuning, regulation, and voicing with a pianist’s touch.
+            Expert piano care for the discerning musician. Tuning, regulation, repairs, and voicing in the Greater Boston area.
           </p>
           
           <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
