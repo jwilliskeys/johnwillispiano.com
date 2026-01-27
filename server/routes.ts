@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertBookingRequestSchema } from "@shared/schema";
-import { getUncachableResendClient } from "./lib/resend";
+import { sendEmail } from "./lib/gmail";
 
 export async function registerRoutes(
   httpServer: Server,
@@ -13,8 +13,6 @@ export async function registerRoutes(
       const validatedData = insertBookingRequestSchema.parse(req.body);
       
       const bookingRequest = await storage.createBookingRequest(validatedData);
-      
-      const { client, fromEmail } = await getUncachableResendClient();
       
       const servicesList = [
         validatedData.needsTuning ? "Tuning" : null,
@@ -33,20 +31,13 @@ export async function registerRoutes(
         ${validatedData.notes ? `<p><strong>Additional Notes:</strong> ${validatedData.notes}</p>` : ''}
       `;
       
-      const emailResult = await client.emails.send({
-        from: fromEmail,
-        to: 'j.willis.keys@gmail.com',
-        subject: `New Booking Request from ${validatedData.name}`,
-        html: emailHtml,
-      });
+      await sendEmail(
+        'j.willis.keys@gmail.com',
+        `New Booking Request from ${validatedData.name}`,
+        emailHtml
+      );
       
-      console.log('Email sent result:', JSON.stringify(emailResult));
-      
-      if (emailResult.error) {
-        console.error('Email sending failed:', emailResult.error);
-        res.status(500).json({ error: 'Failed to send email notification' });
-        return;
-      }
+      console.log('Email sent successfully to j.willis.keys@gmail.com');
       
       res.json({ success: true, id: bookingRequest.id });
     } catch (error) {
