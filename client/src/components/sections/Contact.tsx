@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin } from "lucide-react";
 import rimImage from "@assets/generated_images/abstract_curve_of_a_grand_piano_rim.png";
+import ptgInsignia from "@assets/ptg-insignia.jpg";
 import BookingForm from "@/components/booking/BookingForm";
 import { Button } from "@/components/ui/button";
 
@@ -10,6 +11,15 @@ export default function Contact() {
       {/* Abstract Background Image */}
       <div className="absolute top-0 right-0 w-full md:w-1/2 h-full opacity-10 pointer-events-none">
         <img src={rimImage} alt="" className="w-full h-full object-cover mix-blend-screen" />
+      </div>
+
+      {/* PTG Insignia Watermark */}
+      <div className="absolute right-12 md:right-24 top-1/2 -translate-y-1/2 opacity-15 pointer-events-none hidden md:block">
+        <img 
+          src={ptgInsignia} 
+          alt="Piano Technicians Guild" 
+          className="w-48 h-48 object-contain invert"
+        />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -81,11 +91,8 @@ export default function Contact() {
         </div>
       </div>
       
-      <footer className="absolute bottom-6 w-full px-6 border-t border-background/10 pt-6 flex justify-between items-center text-xs text-background/40">
+      <footer className="absolute bottom-6 w-full px-6 border-t border-background/10 pt-6 text-xs text-background/40">
         <span>© {new Date().getFullYear()} John Willis Piano</span>
-        <div className="flex items-center gap-3">
-          <span>Registered Piano Technician</span>
-        </div>
       </footer>
     </section>
   );
