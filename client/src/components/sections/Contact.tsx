@@ -83,7 +83,7 @@ export default function Contact() {
               <img 
                 src={ptgInsignia} 
                 alt="Piano Technicians Guild" 
-                className="w-40 h-40 md:w-52 md:h-52 object-contain hidden md:block"
+                className="w-40 h-40 md:w-52 md:h-52 object-contain"
               />
             </div>
           </motion.div>
