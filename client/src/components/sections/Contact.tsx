@@ -27,7 +27,7 @@ export default function Contact() {
             </h2>
             
             <p className="text-xl text-background/80 font-light mb-12 max-w-xl">
-              I am currently accepting a limited number of new clients in the Greater Boston area. Please reach out to schedule an appointment.
+              I am currently accepting a limited number of new clients in the Greater Boston area. I am from Centerville, UT and make frequent trips for piano tunings and family. Please reach out to schedule an appointment.
             </p>
 
             <div className="mb-16">
