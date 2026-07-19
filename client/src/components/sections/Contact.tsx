@@ -1,97 +1,98 @@
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin } from "lucide-react";
-import rimImage from "@assets/generated_images/abstract_curve_of_a_grand_piano_rim.png";
-import ptgInsignia from "@assets/ptg-insignia.jpg";
-import BookingForm from "@/components/booking/BookingForm";
-import { Button } from "@/components/ui/button";
+
+const BOOKING_URL = "https://book.johnwillispiano.com/book?embed=true";
 
 export default function Contact() {
-  return (
-    <section id="contact" className="py-24 md:py-32 bg-foreground text-background relative overflow-hidden">
-      {/* Abstract Background Image */}
-      <div className="absolute top-0 right-0 w-full md:w-1/2 h-full opacity-10 pointer-events-none">
-        <img src={rimImage} alt="" className="w-full h-full object-cover mix-blend-screen" />
-      </div>
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [frameHeight, setFrameHeight] = useState(680);
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-3xl relative">
+  useEffect(() => {
+    function onMessage(e: MessageEvent) {
+      if (e.data && e.data.type === "jwp-book-height" && typeof e.data.height === "number") {
+        setFrameHeight(Math.max(520, e.data.height));
+      }
+    }
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, []);
+
+  return (
+    <section id="book" className="py-24 md:py-32 bg-foreground text-background relative overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10 max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-14 items-start">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="lg:col-span-2"
           >
             <span className="text-xs font-medium tracking-[0.2em] uppercase text-background/60 mb-6 block">
               Get in Touch
             </span>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-12 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">
               Ready to elevate your instrument?
             </h2>
-            
-            <p className="text-xl text-background/80 font-light mb-12 max-w-xl">
-              I am currently accepting a limited number of new clients in the Greater Boston area. I am from Centerville, UT and make frequent trips for piano tunings and family. Please reach out to schedule an appointment.
+            <p className="text-background/80 font-light mb-10 text-lg">
+              Accepting a limited number of new clients in Greater Boston, with regular trips to Utah. Book online or reach out directly.
             </p>
 
-            <div className="mb-16">
-              <BookingForm 
-                trigger={
-                  <Button 
-                    size="lg"
-                    className="bg-background text-foreground hover:bg-background/90 rounded-none px-8 py-6 text-lg tracking-wide uppercase font-medium"
-                  >
-                    Book Service Now
-                  </Button>
-                } 
-              />
-            </div>
-
-            <div className="flex items-start gap-12 md:gap-16">
-              <div className="space-y-8">
-                <a 
-                  href="mailto:j.willis.keys@gmail.com" 
-                  className="flex items-center gap-6 group"
-                >
-                  <div className="w-12 h-12 rounded-full border border-background/20 flex items-center justify-center group-hover:bg-background group-hover:text-foreground transition-all duration-300">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <span className="text-2xl md:text-3xl font-serif tracking-wide border-b border-transparent group-hover:border-background transition-colors pb-1">
-                    j.willis.keys@gmail.com
-                  </span>
-                </a>
-
-                <a 
-                  href="tel:+14352755959" 
-                  className="flex items-center gap-6 group"
-                >
-                  <div className="w-12 h-12 rounded-full border border-background/20 flex items-center justify-center group-hover:bg-background group-hover:text-foreground transition-all duration-300">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <span className="text-2xl md:text-3xl font-serif tracking-wide border-b border-transparent group-hover:border-background transition-colors pb-1">
-                    435-275-5959
-                  </span>
-                </a>
-                
-                <div className="flex items-center gap-6 pt-4">
-                  <div className="w-12 h-12 flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-background/40" />
-                  </div>
-                  <span className="text-lg text-background/60 font-light">
-                    Located in Somerville, MA
-                  </span>
+            <div className="space-y-0">
+              <a href="mailto:j.willis.keys@gmail.com" className="flex items-center gap-5 py-5 border-t border-background/15 group" data-testid="link-email">
+                <div className="w-11 h-11 rounded-full border border-background/25 flex items-center justify-center shrink-0 group-hover:bg-background group-hover:text-foreground transition-all duration-300">
+                  <Mail className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-[0.68rem] uppercase tracking-widest text-background/50">Email</div>
+                  <div className="font-serif text-xl">j.willis.keys@gmail.com</div>
+                </div>
+              </a>
+              <a href="tel:+14352755959" className="flex items-center gap-5 py-5 border-t border-background/15 group" data-testid="link-phone">
+                <div className="w-11 h-11 rounded-full border border-background/25 flex items-center justify-center shrink-0 group-hover:bg-background group-hover:text-foreground transition-all duration-300">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-[0.68rem] uppercase tracking-widest text-background/50">Phone</div>
+                  <div className="font-serif text-xl">435-275-5959</div>
+                </div>
+              </a>
+              <div className="flex items-center gap-5 py-5 border-t border-b border-background/15">
+                <div className="w-11 h-11 rounded-full border border-background/25 flex items-center justify-center shrink-0">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-[0.68rem] uppercase tracking-widest text-background/50">Based In</div>
+                  <div className="font-serif text-xl">Somerville, MA</div>
                 </div>
               </div>
-
-              <img 
-                src={ptgInsignia} 
-                alt="Piano Technicians Guild" 
-                className="w-40 h-40 md:w-52 md:h-52 object-contain"
-              />
             </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-3 bg-background"
+          >
+            <iframe
+              ref={iframeRef}
+              src={BOOKING_URL}
+              title="Book a piano service appointment"
+              loading="lazy"
+              className="w-full border-0 block"
+              style={{ height: frameHeight }}
+              data-testid="iframe-booking"
+            />
           </motion.div>
         </div>
       </div>
-      
-      <footer className="absolute bottom-6 w-full px-6 border-t border-background/10 pt-6 text-xs text-background/40">
-        <span>© {new Date().getFullYear()} John Willis Piano</span>
+
+      <footer className="mt-20 border-t border-background/10 pt-6 px-6 text-xs text-background/40">
+        <div className="container mx-auto max-w-6xl flex flex-wrap justify-between gap-3">
+          <span>© {new Date().getFullYear()} John Willis Piano · Somerville, MA</span>
+          <span>Registered Piano Technician · Piano Technicians Guild</span>
+        </div>
       </footer>
     </section>
   );

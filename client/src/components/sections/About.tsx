@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import actionImage from "@assets/JohnWillisPiano_1748_Large_1765228169271.jpeg";
 
+// Experience counts up automatically from 2019 — never needs manual editing.
+export const YEARS_EXPERIENCE = new Date().getFullYear() - 2019;
+
 export default function About() {
   return (
     <section id="about" className="py-24 md:py-32 bg-background">
@@ -13,19 +16,19 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-             <div className="aspect-[4/5] overflow-hidden">
-                <img 
-                  src={actionImage} 
-                  alt="John Willis Tuning Piano" 
-                  className="w-full h-full object-cover object-[25%_center] grayscale hover:grayscale-0 transition-all duration-700"
-                />
-             </div>
-             <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-background border border-border p-6 flex items-center justify-center hidden md:flex">
-                <div className="text-center">
-                  <span className="block text-4xl font-serif mb-1">6+</span>
-                  <span className="text-xs uppercase tracking-wider text-muted-foreground">Years Experience</span>
-                </div>
-             </div>
+            <div className="aspect-[4/5] overflow-hidden">
+              <img
+                src={actionImage}
+                alt="John Willis tuning a piano"
+                className="w-full h-full object-cover object-[25%_center] grayscale hover:grayscale-0 transition-all duration-700"
+              />
+            </div>
+            <div className="absolute -bottom-6 -right-6 w-44 h-44 bg-foreground text-background border border-border p-6 hidden md:flex items-center justify-center">
+              <div className="text-center">
+                <span className="block text-5xl font-serif mb-1" data-testid="text-years-experience">{YEARS_EXPERIENCE}+</span>
+                <span className="text-xs uppercase tracking-wider text-background/70">Years Experience</span>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
@@ -35,36 +38,26 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <h2 className="text-4xl md:text-5xl font-serif">A Musician's Approach to Technology</h2>
-            
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground">A Musician's Approach</span>
+            <h2 className="text-4xl md:text-5xl font-serif">More than keeping it in tune.</h2>
+
             <div className="space-y-6 text-muted-foreground text-lg font-light leading-relaxed">
               <p>
-                I’m Willis, a registered piano technician with the Piano Technicians Guild. My background includes over six years of full-time intensive work in dealerships, rebuilding shops, and university concert halls. This diverse experience has honed my ear for tone and my hands for precision. I approach every instrument with a deep respect for its potential, there’s a lot more that can be accomplished than keeping it tuned.
+                I'm Willis — a Registered Piano Technician with the Piano Technicians Guild, and Head Technician at Boston University. My background includes over {YEARS_EXPERIENCE} years of full-time, intensive work in dealerships, rebuilding shops, and university concert halls. That range has honed my ear for tone and my hands for precision.
               </p>
               <p>
-                I have been an active pianist all my life, with a central vision of helping other musicians to the best of my ability. I care deeply about the joy experienced at the keyboard, and my work is dedicated to bringing out the full musical power and beauty of your instrument. I believe a piano is more than a musical machine; it is a living voice that demands our play, and I’m happy to devote my attention.
+                I've been an active pianist all my life, and I care deeply about the joy experienced at the keyboard. A piano is more than a musical machine; it's a living voice — and my work is dedicated to bringing out its full musical power and beauty.
               </p>
             </div>
 
-            <div className="pt-8">
-              <span className="block text-sm uppercase tracking-widest text-foreground/60 mb-2">Experience</span>
+            <div className="pt-4">
               <ul className="grid grid-cols-2 gap-4">
-                <li className="flex items-center gap-2 text-sm text-foreground/80">
-                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/40" />
-                  Dealership Service
-                </li>
-                <li className="flex items-center gap-2 text-sm text-foreground/80">
-                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/40" />
-                  Concert Prep
-                </li>
-                <li className="flex items-center gap-2 text-sm text-foreground/80">
-                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/40" />
-                  University Maintenance
-                </li>
-                <li className="flex items-center gap-2 text-sm text-foreground/80">
-                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/40" />
-                  Action Rebuilding
-                </li>
+                {["Dealership Service", "Concert Preparation", "University Maintenance", "Action Rebuilding"].map((t) => (
+                  <li key={t} className="flex items-center gap-2 text-sm text-foreground/80">
+                    <span className="w-1.5 h-1.5 rounded-full bg-foreground/40" />
+                    {t}
+                  </li>
+                ))}
               </ul>
             </div>
           </motion.div>
