@@ -5,7 +5,6 @@ import Services from "@/components/sections/Services";
 import Craft from "@/components/sections/Craft";
 import Credentials from "@/components/sections/Credentials";
 import Reviews from "@/components/sections/Reviews";
-import Area from "@/components/sections/Area";
 import Contact from "@/components/sections/Contact";
 
 export default function Home() {
@@ -19,7 +18,6 @@ export default function Home() {
         <Craft />
         <Credentials />
         <Reviews />
-        <Area />
         <Contact />
       </main>
     </div>

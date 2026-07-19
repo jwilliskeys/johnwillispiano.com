@@ -9,7 +9,6 @@ const LINKS = [
   { href: "#services", label: "Services" },
   { href: "#craft", label: "Craft" },
   { href: "#reviews", label: "Reviews" },
-  { href: "#area", label: "Area" },
 ];
 
 export default function Navbar() {

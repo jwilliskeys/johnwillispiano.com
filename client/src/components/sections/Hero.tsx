@@ -26,9 +26,6 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <span className="block text-[0.72rem] font-medium tracking-[0.28em] uppercase text-white/80 mb-6">
-            Registered Piano Technician · Greater Boston
-          </span>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-normal leading-tight mb-8">
             John Willis Piano
           </h1>

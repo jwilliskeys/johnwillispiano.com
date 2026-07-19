@@ -79,12 +79,6 @@ export default function Contact() {
         </div>
       </div>
 
-      <footer className="mt-20 border-t border-background/10 pt-6 px-6 text-xs text-background/40">
-        <div className="container mx-auto max-w-6xl flex flex-wrap justify-between gap-3">
-          <span>© {new Date().getFullYear()} John Willis Piano · Somerville, MA</span>
-          <span>Registered Piano Technician · Piano Technicians Guild</span>
-        </div>
-      </footer>
     </section>
   );
 }
