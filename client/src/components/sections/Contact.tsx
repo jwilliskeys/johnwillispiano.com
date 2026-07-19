@@ -1,40 +1,25 @@
-import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 
-const BOOKING_URL = "https://book.johnwillispiano.com/book?embed=true";
+export const BOOKING_URL = "https://book.johnwillispiano.com/book";
 
 export default function Contact() {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [frameHeight, setFrameHeight] = useState(680);
-
-  useEffect(() => {
-    function onMessage(e: MessageEvent) {
-      if (e.data && e.data.type === "jwp-book-height" && typeof e.data.height === "number") {
-        setFrameHeight(Math.max(520, e.data.height));
-      }
-    }
-    window.addEventListener("message", onMessage);
-    return () => window.removeEventListener("message", onMessage);
-  }, []);
-
   return (
     <section id="book" className="py-24 md:py-32 bg-foreground text-background relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-14 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-2"
           >
             <span className="text-xs font-medium tracking-[0.2em] uppercase text-background/60 mb-6 block">
               Get in Touch
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif mb-8 leading-tight">
+            <h2 className="text-4xl md:text-6xl font-serif mb-8 leading-tight">
               Ready to elevate your instrument?
             </h2>
-            <p className="text-background/80 font-light mb-10 text-lg">
+            <p className="text-background/80 font-light mb-10 text-lg max-w-md">
               Accepting a limited number of new clients in Greater Boston, with regular trips to Utah. Book online or reach out directly.
             </p>
 
@@ -73,17 +58,23 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-3 bg-background"
+            className="bg-background text-foreground p-12 md:p-16 text-center"
           >
-            <iframe
-              ref={iframeRef}
-              src={BOOKING_URL}
-              title="Book a piano service appointment"
-              loading="lazy"
-              className="w-full border-0 block"
-              style={{ height: frameHeight }}
-              data-testid="iframe-booking"
-            />
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted-foreground block mb-5">
+              Online Booking
+            </span>
+            <h3 className="font-serif text-3xl md:text-4xl mb-4">Book your appointment</h3>
+            <p className="text-muted-foreground font-light mb-10 max-w-sm mx-auto">
+              Pick your services, choose an open time, and you're on the calendar.
+            </p>
+            <a
+              href={BOOKING_URL}
+              data-testid="button-book-now"
+              className="inline-flex items-center gap-3 px-10 py-4 bg-foreground text-background font-medium tracking-widest text-sm uppercase hover:bg-primary transition-colors"
+            >
+              Book Service Now
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </motion.div>
         </div>
       </div>

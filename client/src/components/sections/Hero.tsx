@@ -38,7 +38,7 @@ export default function Hero() {
 
           <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
             <a
-              href="#book"
+              href="https://book.johnwillispiano.com/book"
               data-testid="button-hero-book"
               className="px-8 py-3 bg-white text-black font-medium tracking-wide text-sm uppercase hover:bg-white/90 transition-colors"
             >

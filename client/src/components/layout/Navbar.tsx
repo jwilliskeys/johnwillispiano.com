@@ -46,7 +46,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        <a href="#book" className="hidden md:block">
+        <a href="https://book.johnwillispiano.com/book" className="hidden md:block">
           <Button
             variant="outline"
             className="rounded-none border-primary hover:bg-primary hover:text-primary-foreground transition-all uppercase tracking-widest text-xs"
@@ -79,7 +79,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#book"
+            href="https://book.johnwillispiano.com/book"
             onClick={() => setOpen(false)}
             className="px-6 py-3.5 text-sm uppercase tracking-wide font-medium text-primary hover:bg-secondary/50"
           >
